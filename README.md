@@ -1,4 +1,5 @@
 このリポジトリは、技術力テスト用のリポジトリを、芝田が取り組んだものになります。
+
 （本家様のURL https://github.com/mofmof/dev-exam ）
 
 ## 開発したアプリケーションの概要
@@ -19,4 +20,6 @@
 - rails db:create db:migrate
 - rails s
 
-（seedデータは現在用意しておりません）
+### ローカル環境でseedデータが欲しい場合は以下を実行
+
+- bundle exec rake db:seed_fu FIXTURE_PATH=./db/fixtures/develop

@@ -1,7 +1,7 @@
 <%= form_for(property) do |f| %>
   <% if property.errors.any? %>
     <div id='error_explanation'>
-      <h2><%= pluralize(property.errors.count, I18n.t("layout.views.error_indicate")) %></h2>
+      <h2><%= pluralize(property.errors.count, t("layout.views.error_indicate")) %></h2>
 
       <ul>
       <% property.errors.full_messages.each do |message| %>
@@ -11,29 +11,26 @@
     </div>
   <% end %>
 
-  <%= f.label :name, I18n.t("layout.property.name") %>
+  <%= f.label :name, t("layout.property.name") %>
   <%= f.text_field :name, class: 'form-control' %>
-  <%= f.label :price, I18n.t("layout.property.price") %>
-  <%= f.text_field :price, class: 'form-control' %><%= I18n.t("number.currency.format.unit") %>
-  <%= f.label :address, I18n.t("layout.property.address") %>
+  <%= f.label :rent, t("layout.property.rent") %>
+  <%= f.text_field :rent, class: 'form-control' %><%= t("number.currency.format.unit") %>
+  <%= f.label :address, t("layout.property.address") %>
   <%= f.text_field :address, class: 'form-control' %>
-  <%= f.label :age, I18n.t("layout.property.age") %>
-  <%= f.text_field :age, class: 'form-control' %><%= I18n.t("datetime.prompts.year") %>
-  <%= f.label :remarks, I18n.t("layout.property.remarks") %>
+  <%= f.label :age, t("layout.property.age") %>
+  <%= f.text_field :age, class: 'form-control' %><%= t("datetime.prompts.year") %>
+  <%= f.label :remarks, t("layout.property.remarks") %>
   <%= f.text_area :remarks, class: 'form-control' %>
 
   <div class='nearest-stations-form'><%= f.fields_for :nearest_stations do |stations_form| %></div>
-    <h3><%= I18n.t("activerecord.models.nearest_stations") %><%= stations_form.index + 1 %></h3>
-    <%= stations_form.label :line, I18n.t("layout.nearest_station.line") %>
+    <h3><%= t("activerecord.models.nearest_stations") %><%= stations_form.index + 1 %></h3>
+    <%= stations_form.label :line, t("layout.nearest_station.line") %>
     <%= stations_form.text_field :line %>
-    <%= stations_form.label :name, I18n.t("layout.nearest_station.name") %>
+    <%= stations_form.label :name, t("layout.nearest_station.name") %>
     <%= stations_form.text_field :name %>
-    <%= stations_form.label :walking_minutes, I18n.t("layout.nearest_station.walking_minutes") %>
-    <%= stations_form.text_field :walking_minutes %><%= I18n.t("datetime.prompts.minute") %>
+    <%= stations_form.label :walking_minutes, t("layout.nearest_station.walking_minutes") %>
+    <%= stations_form.text_field :walking_minutes %><%= t("datetime.prompts.minute") %>
   <% end %>
 
-  <div class='actions form-submit'>
-    <%= f.submit I18n.t("layout.views.create") if action_name == 'new' || action_name == 'create' %>
-    <%= f.submit I18n.t("layout.views.update") if action_name == 'edit' || action_name == 'update' %>
-  </div>
+  <div class='actions form-submit'><%= f.submit %></div>
 <% end %>

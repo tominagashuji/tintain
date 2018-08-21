@@ -6,7 +6,7 @@ ja:
     attributes:
       property:
         name: "物件名"
-        price: "賃料"
+        rent: "賃料"
         address: "住所"
         age: "築年数"
         remarks: "備考"
@@ -14,3 +14,8 @@ ja:
         line: "路線名"
         name: "駅名"
         walking_minutes: "徒歩分数"
+  helpers:
+    submit:
+      property:
+        create: "登録する"
+        update: "更新する"

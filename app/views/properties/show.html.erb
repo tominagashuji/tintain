@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<div class='show-form'><strong><%= I18n.t("layout.property.name") %>：</strong><%= @property.name %></div>
-<div class='show-form'><strong><%= I18n.t("layout.property.price") %>：</strong><%= number_to_currency(@property.price, :locale => 'ja') %></div>
-<div class='show-form'><strong><%= I18n.t("layout.property.address") %>：</strong><%= @property.address %></div>
-<div class='show-form'><strong><%= I18n.t("layout.property.age") %> </strong><%= @property.age %><%= I18n.t("datetime.prompts.year") %></div>
-<div class='show-form'><strong><%= I18n.t("layout.property.remarks") %> </strong><%= @property.remarks %></div>
+<div class='show-form'><strong><%= t("layout.property.name") %>：</strong><%= @property.name %></div>
+<div class='show-form'><strong><%= t("layout.property.rent") %>：</strong><%= number_to_currency(@property.rent, locale: 'ja') %></div>
+<div class='show-form'><strong><%= t("layout.property.address") %>：</strong><%= @property.address %></div>
+<div class='show-form'><strong><%= t("layout.property.age") %> </strong><%= @property.age %><%= t("datetime.prompts.year") %></div>
+<div class='show-form'><strong><%= t("layout.property.remarks") %> </strong><%= @property.remarks %></div>
 
 <div class='nearest-stations-form'><% @property.nearest_stations.each.with_index(1) do |nearest_station, i| %></div>
-  <h3><%= I18n.t("activerecord.models.nearest_stations") %><%= i %></h3>
-  <div class='show-form'><strong><%= I18n.t("layout.nearest_station.line") %> </strong><%= nearest_station.line %></div>
-  <div class='show-form'><strong><%= I18n.t("layout.nearest_station.name") %> </strong><%= nearest_station.name %></div>
-  <div class='show-form'><strong><%= I18n.t("layout.nearest_station.walking_minutes") %> </strong><%= nearest_station.walking_minutes %><%= I18n.t("datetime.prompts.minute") %></div>
+  <h3><%= t("activerecord.models.nearest_stations") %><%= i %></h3>
+  <div class='show-form'><strong><%= t("layout.nearest_station.line") %> </strong><%= nearest_station.line %></div>
+  <div class='show-form'><strong><%= t("layout.nearest_station.name") %> </strong><%= nearest_station.name %></div>
+  <div class='show-form'><strong><%= t("layout.nearest_station.walking_minutes") %> </strong><%= nearest_station.walking_minutes %><%= t("datetime.prompts.minute") %></div>
 <% end %>
 
-<%= link_to I18n.t("layout.views.edit"), edit_property_path(@property) %> |
-<%= link_to I18n.t("layout.views.back"), properties_path %>
+<%= link_to t("layout.views.edit"), edit_property_path(@property) %> |
+<%= link_to t("layout.views.back"), properties_path %>

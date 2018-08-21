@@ -13,28 +13,28 @@
 ActiveRecord::Schema.define(version: 20180816084406) do
 
   create_table "nearest_stations", force: :cascade do |t|
-    t.string   "line",            default: "", null: false
-    t.string   "name",            default: "", null: false
-    t.integer  "walking_minutes",              null: false
-    t.integer  "property_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "line",            limit: 500, default: "", null: false
+    t.string   "name",            limit: 500, default: "", null: false
+    t.integer  "walking_minutes", limit: 4,                null: false
+    t.integer  "property_id",     limit: 4,                null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.index ["name"], name: "index_nearest_stations_on_name"
     t.index ["property_id"], name: "index_nearest_stations_on_property_id"
     t.index ["walking_minutes"], name: "index_nearest_stations_on_walking_minutes"
   end
 
   create_table "properties", force: :cascade do |t|
-    t.string   "name",       default: "", null: false
-    t.integer  "price",                   null: false
-    t.string   "address",    default: "", null: false
-    t.integer  "age",                     null: false
-    t.text     "remarks",    default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",       limit: 500,  default: "", null: false
+    t.integer  "rent",       limit: 4,                 null: false
+    t.string   "address",    limit: 500,  default: "", null: false
+    t.integer  "age",        limit: 4,                 null: false
+    t.text     "remarks",    limit: 1000, default: "", null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["address"], name: "index_properties_on_address"
     t.index ["age"], name: "index_properties_on_age"
-    t.index ["price"], name: "index_properties_on_price"
+    t.index ["rent"], name: "index_properties_on_rent"
   end
 
 end

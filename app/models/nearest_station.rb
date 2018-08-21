@@ -1,6 +1,5 @@
 class NearestStation < ApplicationRecord
   FORM_COUNT = 2 # 物件登録時に出力する最寄り駅入力フォームの個数
-  FORM_COUNT.freeze
 
   belongs_to :property, inverse_of: :nearest_stations
 

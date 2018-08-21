@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
 
   def index
-    @properties = Property.all
+    @properties = Property.order(:name).limit(Property::INDICATE_MAXIMUM)
   end
 
   def show
@@ -14,13 +14,15 @@ class PropertiesController < ApplicationController
   end
 
   def edit
+    possible_create_stations_count = NearestStation::FORM_COUNT - @property.nearest_stations.count
+    possible_create_stations_count.times { @property.nearest_stations.build }
   end
 
   def create
     @property = Property.new(property_params)
 
     if @property.save
-      redirect_to @property, notice: I18n.t("layout.property.notice_create")
+      redirect_to @property, notice: t("layout.property.notice_create")
     else
       render :new
     end
@@ -28,7 +30,7 @@ class PropertiesController < ApplicationController
 
   def update
     if @property.update(property_params)
-      redirect_to @property, notice: I18n.t("layout.property.notice_update")
+      redirect_to @property, notice: t("layout.property.notice_update")
     else
       render :edit
     end
@@ -36,7 +38,7 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property.destroy
-    redirect_to properties_url, notice: I18n.t("layout.property.notice_destroy")
+    redirect_to properties_url, notice: t("layout.property.notice_destroy")
   end
 
   private
@@ -45,7 +47,7 @@ class PropertiesController < ApplicationController
     end
 
     def property_params
-      params.require(:property).permit(:name, :price, :address, :age, :remarks,
+      params.require(:property).permit(:name, :rent, :address, :age, :remarks,
                                        nearest_stations_attributes: [:id, :line, :name, :walking_minutes])
     end
 end

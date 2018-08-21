@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= I18n.t("layout.property.index_title") %></h1>
+<h1><%= t("layout.property.index_title") %></h1>
 
 <table>
   <thead>
     <tr>
-      <th><%= I18n.t("layout.property.name") %></th>
-      <th><%= I18n.t("layout.property.price") %></th>
-      <th><%= I18n.t("layout.property.address") %></th>
-      <th><%= I18n.t("layout.property.age") %></th>
-      <th><%= I18n.t("layout.property.remarks") %></th>
+      <th><%= t("layout.property.name") %></th>
+      <th><%= t("layout.property.rent") %></th>
+      <th><%= t("layout.property.address") %></th>
+      <th><%= t("layout.property.age") %></th>
+      <th><%= t("layout.property.remarks") %></th>
     </tr>
   </thead>
 
@@ -17,13 +17,13 @@
     <% @properties.each do |property| %>
       <tr>
         <td><%= property.name %></td>
-        <td><%= number_to_currency(property.price, :locale => 'ja') %></td>
+        <td><%= number_to_currency(property.rent, locale: 'ja') %></td>
         <td><%= property.address %></td>
-        <td><%= property.age %><%= I18n.t("datetime.prompts.year") %></td>
+        <td><%= property.age %><%= t("datetime.prompts.year") %></td>
         <td><%= property.remarks %></td>
-        <td><%= link_to I18n.t("layout.views.show"), property %></td>
-        <td><%= link_to I18n.t("layout.views.edit"), edit_property_path(property) %></td>
-        <td><%= link_to I18n.t("layout.views.destroy"), property, method: :delete, data: { confirm: I18n.t("layout.views.confirm_destroy") } %></td>
+        <td><%= link_to t("layout.views.show"), property %></td>
+        <td><%= link_to t("layout.views.edit"), edit_property_path(property) %></td>
+        <td><%= link_to t("layout.views.destroy"), property, method: :delete, data: { confirm: t("layout.views.confirm_destroy") } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,4 +31,4 @@
 
 <br>
 
-<%= link_to I18n.t("layout.property.new"), new_property_path %>
+<%= link_to t("layout.property.new"), new_property_path %>
